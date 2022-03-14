@@ -1,0 +1,63 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int TCN;
+    cin >> TCN;
+    
+    int ARRAY[TCN];
+    
+    
+    int counter = 0;
+    while(counter < TCN) {
+        int inputNumber;
+        cin >> inputNumber;
+        
+        if(inputNumber % 7 == 0) {
+            ARRAY[counter] = inputNumber;
+        }
+        else if (inputNumber % 7 != 0) {
+            int a = inputNumber;
+            int b = inputNumber;
+            while (a % 7 != 0) {
+                a++;
+            }
+            while(b % 7 != 0) {
+                b--;
+            }
+            
+            int x = a;
+            int y = b;
+            int z = inputNumber;
+            
+            while(x % 10 != 0) {
+                x--;
+            }
+            while(y % 10 != 0) {
+                y--;
+            }
+            while(z % 10 != 0) {
+                z--;
+            }
+            
+            if(x/10 == z/10) {
+                ARRAY[counter] = a;
+            }
+            else {
+                ARRAY[counter] = b;
+            }
+            
+            }
+            counter++;
+        }
+        
+    
+    for(int i = 0; i < TCN; i++) {
+        cout << ARRAY[i] << endl;
+    }
+
+    return 0;
+}
+
