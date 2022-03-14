@@ -1,0 +1,52 @@
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int main() {
+    
+    int inputNumber;
+    cin >> inputNumber;
+    int ARRAY[inputNumber];
+    cin.get();
+    
+    int COUNTER = 0;
+    while(COUNTER < inputNumber) {
+        string str;
+        cin >> str;
+        
+        int Zcounter = 0;
+        int Ocounter = 0;
+        
+        for (int i = 0; i < str.size(); i++) {
+            if (str[i] == '0') {
+                Zcounter++;
+            }
+            else if (str[i] == '1') {
+                Ocounter++;
+            }
+        }
+        
+        if(Zcounter || Ocounter == 0) {
+            ARRAY[COUNTER] = 0;
+        }
+        if (Zcounter == Ocounter) {
+           ARRAY[COUNTER] = Ocounter-1;
+        }
+        if (Zcounter < Ocounter) {
+            ARRAY[COUNTER] = Zcounter;
+        }
+        if (Ocounter < Zcounter) {
+            ARRAY[COUNTER] = Ocounter;
+        }
+        COUNTER++;
+        cin.get();
+    }
+    
+        for(int i = 0; i < inputNumber; i++) {
+            cout << ARRAY[i] << endl;
+        }
+    
+    return 0;
+}
