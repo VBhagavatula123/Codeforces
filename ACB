@@ -1,0 +1,73 @@
+
+#include <iostream>
+#include <cstring>
+
+
+using namespace std;
+int main()
+{
+    int TCN;
+    cin >> TCN;
+    
+    if(TCN < 1 || TCN > 100) {
+        return 0;
+    }
+    
+    int ARRAY[TCN];
+    
+    
+    
+    int counter = 0;
+    while (counter < TCN) {
+        int stringCount;
+        cin >> stringCount;
+        string binSTR;
+        cin >> binSTR;
+        int Ocount = 0;
+        int Zcount = 0;
+        
+        
+
+        for(int i = 0; i < binSTR.length(); i++) {
+            if(binSTR[i] == '1') {
+                Ocount++;
+            }
+            if(binSTR[i] == '0'){
+                Zcount++;
+            }
+        }
+        
+        
+        if(binSTR.length() == 2) {
+            if(Zcount == Ocount) {
+                ARRAY[counter] = 1;
+            }
+            else {
+                ARRAY[counter] = 0;
+            }
+        }
+        if(binSTR.length() > 2) {
+            ARRAY[counter] = 0;
+        }
+        if(binSTR.length() < 2) {
+            ARRAY[counter] = 1;
+        }
+        
+        
+        counter++;
+    }
+    
+    for(int i = 0; i < TCN; i++) {
+        if(ARRAY[i] == 1) {
+            cout << "YES"  << endl;
+        }
+        
+        else {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}
+
+
