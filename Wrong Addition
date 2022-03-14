@@ -1,0 +1,145 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+struct Node 
+{
+    int sum;
+    Node* next;
+};
+int main()
+{
+    vector<Node*> NodeVect;
+    int TCN;
+    cin >> TCN;
+    
+    while(TCN--) {
+        Node* head = NULL;
+        
+        long long one;
+        long long two;
+        cin >> one;
+        cin >> two;
+        
+        float a = one;
+        float b = two;
+        
+        int COUNT1 = 0;
+        while(a > 1) {
+            a = a/10;
+            COUNT1++;
+        }
+        int COUNT2 = 0;
+        while(b > 1) {
+            b = b/10;
+            COUNT2++;
+        }
+        
+        int amountOfTimes = 0;
+        if(COUNT2 > COUNT1) {
+            amountOfTimes = COUNT2;
+        }
+        else {
+            amountOfTimes = COUNT2;
+        }
+        
+        long long c = one;
+        long long d = two;
+        
+        while(amountOfTimes--) {
+            int count = 0;
+                while(c % 10 != 0) {
+                    c--;
+                    count++;
+                }
+            c = c/10;
+            int count2 = 0;
+                while(d % 10 != 0) {
+                    d--;
+                    count2++;
+                }
+            d = d/10;
+            
+            if(count2 - count >= 0) {
+                Node* insert = new Node();
+                insert->sum = count2 - count;
+                if(head == NULL) {
+                  head = insert;
+                }
+                
+                else if(head != NULL) {
+                    insert->next = head;
+                    head = insert;
+                }
+            }
+            if(count2-count < 0) {
+                long long x = d;
+                int xcount = 0;
+                while(x % 10 != 0) {
+                    x--;
+                    xcount++;
+                }
+                if(xcount != 1) {
+                    Node* insert = new Node();
+                    insert->sum = -1;
+                    if(head == NULL) {
+                      head = insert;
+                      head->next = NULL;
+                    }
+                    else if(head != NULL) {
+                        insert->next = head;
+                        head = insert;
+                        head ->next = NULL;
+                    }
+                    break;
+                }
+                else  {
+                    count2 = count2 + 10;
+                    Node* insert = new Node();
+                    insert->sum = count2 - count;
+                    if(head == NULL) {
+                      head = insert;
+                    }
+                    else if(head != NULL) {
+                        insert->next = head;
+                        head = insert;
+                    }
+                    int dcount = 0;
+                    while(d % 10 != 0) {
+                        d--;
+                    }
+                    d = d/10;
+                }
+            }
+            
+        }
+        
+        while(head->sum == 0) {
+            Node* temp = head;
+            head = head->next;
+         
+            delete temp;
+        }
+        
+        NodeVect.push_back(head);
+    }
+    
+    for(int i =0; i < NodeVect.size(); i++) {
+        Node* current = NodeVect[i];
+        
+        while(current != NULL) {
+            cout << current->sum;
+            current = current->next;
+        }
+        cout << endl;
+    }
+   
+    
+    return 0;
+}
+
+
+
+
+
