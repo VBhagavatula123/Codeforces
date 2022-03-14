@@ -1,0 +1,131 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    int TCN;
+    cin >> TCN;
+    int ARRAY[TCN];
+    
+    int counter = 0;
+    while(counter < TCN) {
+        int length;
+        cin >> length;
+        int String1[length];
+        int String2[length];
+        for(int i = 0; i < length; i++) {
+            cin >> String1[i];
+        }
+        for(int i = 0; i < length; i++) {
+            cin >> String2[i];
+        }
+       
+        
+        int max = String1[0];
+        int MAX = String2[0];
+        for(int i = 0; i < length; i++) {
+            if(String1[i] > max) {
+                max = String1[i];
+            }
+            if(String2[i] > MAX) {
+                MAX = String2[i];
+            }
+        }
+        int index = 0;
+        int INDEX = 0;
+        for(int i = 0; i < length; i++) {
+            if(String1[i] == max) {
+                index = i;
+            }
+            if(String2[i] == MAX) {
+                INDEX = i;
+            }
+        }
+        
+        int str2val = String2[index];
+        int str1val = String1[INDEX];
+        
+        //cout << max << endl;
+        //cout << index << endl;
+        
+        int StringA[length];
+        int StringB[length];
+        
+        for(int i = 0; i < length; i++) {
+            StringA[i] = String1[i];
+            StringB[i] = String2[i];
+        }
+        
+        
+        
+        for(int i = 0; i < length; i++) {
+            if(String2[i] > str2val) {
+                if(String1[i] < String2[i]) {
+                    int a = String2[i];
+                    String2[i] = String1[i];
+                    String1[i] = a;
+                }
+            }
+        }
+        
+        
+        for(int i = 0; i < length; i++) {
+            if(StringA[i] > str1val) {
+                if(StringB[i] < StringA[i]) {
+                    int a = StringA[i];
+                    StringA[i] = StringB[i];
+                    StringB[i] = a;
+                }
+            }
+        }
+        
+        int max2 = String2[0];
+        for(int i = 0; i < length; i++) {
+            if(String2[i] > max2) {
+                max2 = String2[i];
+            }
+        }
+        
+        int MAX2 = StringA[0];
+        for(int i = 0; i < length; i++) {
+            if(StringA[i] > MAX2) {
+                MAX2 = StringA[i];
+            }
+        }
+        
+        
+        
+        for(int i = 0; i < length; i++) {
+           // cout << String1[i] << " ";
+        }
+        //cout << endl;
+        for(int i = 0; i < length; i++) {
+            //cout << String2[i] << " ";
+        }
+        
+        
+        
+        int answer = max * max2;
+        int answer2 = MAX * MAX2;
+        
+        if(max > MAX) {
+            ARRAY[counter] = answer;
+        }
+        else {
+            ARRAY[counter] = answer2;
+        }
+        
+        
+        
+        //cout << answer << endl;
+        
+        counter++;
+    }
+    
+    for(int i = 0; i < TCN; i++) {
+        cout << ARRAY[i] << endl;
+    } 
+    
+    return 0;
+}
