@@ -1,0 +1,85 @@
+
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+    int TCN;
+    cin >> TCN;
+    char ARRAY[TCN];
+    
+    int counter = 0;
+    while (counter < TCN) {
+        int firstLine[2];
+        int secondLine[2];
+        
+        for(int i = 0; i < 2; i++) {
+            cin >> firstLine[i];
+        }
+        for(int i = 0; i < 2; i++) {
+            cin >> secondLine[i];
+        }
+        
+        if(firstLine[1] != secondLine[1]) {
+            int difference = firstLine[1] - secondLine[1];
+            
+            float a = firstLine[0];
+            float b = secondLine[0];
+            
+            int aCount = 0;
+            while(a > 1) {
+                a = a/10;
+                aCount++;
+            }
+            int bCount = 0;
+            while(b > 1) {
+                b = b/10;
+                bCount++;
+            }
+            
+            float countDif = aCount - bCount;
+            
+            if(countDif + difference == 0) {
+                if(a > b) {
+                    ARRAY[counter] = '>';
+                }
+                if(a < b) {
+                    ARRAY[counter] = '<';
+                }
+                if(a == b) {
+                    ARRAY[counter] = '=';
+                }
+            }
+            if(countDif + difference < 0) {
+                ARRAY[counter] = '<';
+            }
+            if(countDif + difference > 0) {
+                ARRAY[counter] = '>';
+            }
+            
+            
+        }
+        if(firstLine[1] == secondLine[1]) {
+            if(firstLine[0] == secondLine[0]) {
+            ARRAY[counter] = '=';
+            }
+            if(firstLine[0] > secondLine[0]) {
+            ARRAY[counter] = '>';
+            }
+            if(firstLine[0] < secondLine[0]) {
+            ARRAY[counter] = '<';
+            }
+        }
+        
+        counter++;
+    }
+    
+    for(int i = 0; i < TCN; i++) {
+        cout << ARRAY[i] << endl;
+    }
+    
+
+    return 0;
+}
+
