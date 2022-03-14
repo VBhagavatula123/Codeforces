@@ -1,0 +1,93 @@
+
+#include <iostream>
+
+// delete gretest and second greatest elements from the array
+using namespace std;
+
+
+int max(int *a, int n) {
+    int counter = 0;
+    int maximum = 0;
+    for(int i = 0; i < n; i++) {
+        if(a[i] > maximum) {
+            maximum = a[i];
+            
+        }
+    }
+    
+    for(int i = 0; i < n; i++) {
+        if(a[i] == maximum) {
+            break;
+        }
+        counter++;
+    }
+    
+    for(int i = 0; i < n; i++) {
+        if(a[i] == counter) {
+            a[i] = -1;
+        }
+    }
+    
+    return maximum;
+}
+
+int main()
+{
+   int TCN;
+   cin >> TCN;
+   
+   int ARRAY[TCN];
+   
+   int counter = 0;
+   while(counter < TCN) {
+       
+       int sum = 0;
+       int n;
+       int k;
+       
+       cin >> n;
+       cin >> k;
+       
+       int arr[n];
+       
+       for(int i = 0; i < n; i++) {
+           cin >> arr[i];
+       }
+       
+       int full = n*2;
+       
+       int ARR[full];
+       for(int i = 0; i < full; i++) {
+           ARR[i] = max(arr, n);
+       }
+       
+       
+       for(int i = 0; i < full; i++) {
+           sum += ARR[i]/ARR[i+n];
+       }
+       
+       
+       for(int i = 0; i < n; i++) {
+           if(arr[i] > 0) {
+               sum += arr[i];
+           }
+       }
+       
+       ARRAY[counter] = sum;
+       
+       counter++;
+       
+   }
+   
+   
+   for(int i = 0; i < TCN; i++) {
+       cout << ARRAY[i] << endl;
+   }
+   
+   return 0;
+}
+
+   
+
+
+
